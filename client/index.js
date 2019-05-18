@@ -14,10 +14,19 @@ const handlebars = require('express-handlebars');
 const app = express();
 
 //创建页面模板main.hbs
-const hbs = handlebars.create({ defaultLayout: 'main', extname: '.hbs' });
+const hbs = handlebars.create({
+    defaultLayout: 'main',
+    extname: '.hbs',
+    partialsDir: __dirname + 'views/partials', // 片段文件路径
+    layoutsDir: __dirname + 'views/layouts',// 模板文件路径
+    helpers: hbsHelper
+});
 
 //绑定端口
 app.set('port', process.env.PORT || 3000);
+
+//绑定模板文件路径
+app.set('views', __dirname + "/views");
 
 //绑定模板引擎
 app.engine('hbs', hbs.engine);
@@ -34,7 +43,7 @@ app.get('/', (req, res) => {
 });
 
 //about路由
-app.get('/', (req, res) => {
+app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About Page'
     });
