@@ -36,14 +36,15 @@ app.use(express.static(__dirname + '/public'));
 
 //home路由
 app.get('/', (req, res) => {
-    res.render('home', {
-        title: "Home Page"
+    res.render('login', {
+        title: "Home Page",
+        layout: ''
     });
 });
 
 //about路由
-app.get('/about', (req, res) => {
-    res.render('about', {
+app.get('/home', (req, res) => {
+    res.render('home', {
         title: 'About Page'
     });
 });

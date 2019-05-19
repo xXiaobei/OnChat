@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OnChat</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/onchat.css">
+</head>
+<style type="text/css">
+    .logForm {
+        position: fixed;
+        top: 100px;
+        left: 40%;
+        background-color: white;
+        height: 300px;
+        width: 500px;
+        padding: 50px;
+        border-radius: 50px;
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <div class="logForm">
+            <h1>OnChat Online </h1>
+            <hr>
+            <div class="form-group">
+                <input type="text" class="form-control" id="userName" placeholder="请输入用户名..." />
+            </div>
+            <div class="form-group">
+                <input type="button" class="btn btn-primary btn-block" onclick="onchat_login()" value="进入聊天室" />
+            </div>            
+        </div>
+
+    </div>
+</body>
+<script src="/jquery-3.4.1.min.js"></script>
+<script src="/popper.min.js"></script>
+<script src="/bootstrap.min.js"></script>
+<script src="/app.js"></script>
+
+</html>
