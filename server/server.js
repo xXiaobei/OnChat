@@ -11,33 +11,30 @@ let onchat_groups = null;
 //消息表messages
 let onchat_messages = null;
 
+// const onchat = null;
 
 //链接到mongodb
-//mongodb 为动态的schema 会自动创建onchat数据库
-const dbUrl = 'mongodb://127.0.0.1/onchat';
-mongo.connect(dbUrl, (err, dbClient) => {
+const dbName = "onchat";
+const dbClient = new mongo('mongodb://127.0.0.1');
+dbClient.connect(err => {
+    if(err) throw err;
+    console.log("MongoDB Successfully connected ...");
+    const db = dbClient.db(dbName);
 
-    check_error(err); // 存在异常则抛出    
-
-    //赋值对应的表
-    onchat_users = dbClient.db("users");
-    onchat_groups = dbClient.db("groups");
-    onchat_messages = dbClient.db("messages");
-
-    console.log("MongoDB successfully connected ... ");
+    client.on('connection', (socket) => {
+        console.log('Client connected ' + socket.id);
+    
+        //用户登陆逻辑
+        socket.on("login", (data) => {
+            console.log(data)
+            db.collection("users").insert({n:data.n,t:data.t});
+            socket.emit('login_Status', true);
+        });
+    
+        //断开链接
+        socket.on('disconnect', () => {
+            console.log('Client disconnect from server ' + socket.id);
+        });
+    });
 });
 
-//用户登陆逻辑
-client.on("login", (data) => {
-    onchat_users.insert({ n: data.n, t: data.t });
-    client.emit('login_Status', true);
-});
-
-
-
-//异常处理
-function check_error(err) {
-    if (err) {
-        throw err;
-    }
-}

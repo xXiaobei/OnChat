@@ -50,7 +50,7 @@ app.get('/home', (req, res) => {
 });
 
 app.listen(app.get('port'), () => {
-    console.log('Server started with port ' + app.get('port'))
+    console.log('Client Server started with port ' + app.get('port'))
 });
 
 
