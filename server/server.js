@@ -15,24 +15,29 @@ let onchat_messages = null;
 //链接到mongodb
 //mongodb 为动态的schema 会自动创建onchat数据库
 const dbUrl = 'mongodb://127.0.0.1/onchat';
-mongo.connect(dbUrl, (err, db) => {
-    
+mongo.connect(dbUrl, (err, dbClient) => {
+
     check_error(err); // 存在异常则抛出    
-    
+
     //赋值对应的表
-    onchat_users = db.collection("users");
-    onchat_groups = db.collection("groups");
-    onchat_messages = db.collection("messages");
+    onchat_users = dbClient.db("users");
+    onchat_groups = dbClient.db("groups");
+    onchat_messages = dbClient.db("messages");
 
     console.log("MongoDB successfully connected ... ");
 });
 
+//用户登陆逻辑
+client.on("login", (data) => {
+    onchat_users.insert({ n: data.n, t: data.t });
+    client.emit('login_Status', true);
+});
 
 
 
 //异常处理
 function check_error(err) {
-    if(err) {
+    if (err) {
         throw err;
     }
 }
