@@ -17,9 +17,8 @@ const app = express();
 const hbs = handlebars.create({
     defaultLayout: 'main',
     extname: '.hbs',
-    partialsDir: __dirname + 'views/partials', // 片段文件路径
-    layoutsDir: __dirname + 'views/layouts',// 模板文件路径
-    helpers: hbsHelper
+    partialsDir: __dirname + '/views/partials', // 片段文件路径
+    layoutsDir: __dirname + '/views/layouts'// 模板文件路径
 });
 
 //绑定端口

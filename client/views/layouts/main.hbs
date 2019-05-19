@@ -4,13 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Node Study</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/onchat.css">
 </head>
 
 <body>
-    <header>
-        <h1>欢迎来到Nodejs</h1>
-    </header>
-    {{{body}}}
+    <div class="container">
+        <div id="onchat-header">
+            <div class="col-md-4">
+                <a href="#" class="btn btn-lg" style="color: #fff">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                </a>
+                <span id="onchat-title">OnChat</span>
+            </div>
+            <div class="col-md-8">
+                <ul id="onchat-nav">
+                    <li><span class="glyphicon glyphicon-home"></span>大厅</li>
+                    <li><span class="glyphicon glyphicon-paperclip"></span>资料大全</li>
+                    <li><span class="glyphicon glyphicon-user"></span>联系我们</li>
+                </ul>
+            </div>
+        </div>
+        {{{body}}}
+    </div>
 </body>
+<script src="/jquery-3.4.1.min.js"></script>
+<script src="/popper.min.js"></script>
+<script src="/bootstrap.min.js"></script>
 
 </html>
